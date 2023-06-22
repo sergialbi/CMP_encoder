@@ -1,0 +1,49 @@
+CMPDa20_c2_train
+                             frequency % frequency #subcategories   mean +- std
+(1) External Relations            5508        5.2%              9    612 +- 644
+(2) Freedom, Democracy            8202       7.75%              4  2050 +- 1869
+(3) Political System             15829      14.96%              5  3166 +- 2894
+(4) Economy                      29562      27.94%             16  1848 +- 2519
+(5) Welfare, Quality of Life     31484      29.75%              7  4498 +- 3597
+(6) Fabric of Society             6393       6.04%              8    799 +- 653
+(7) Social Groups                 8846       8.36%              6  1474 +- 1183
+OVERALL                         105824        100%             55          None
+
+
+
+CMPD_val
+                             frequency % frequency #subcategories  mean +- std
+(1) External Relations            1328       5.48%              9   148 +- 159
+(2) Freedom, Democracy            1944       8.03%              4   486 +- 441
+(3) Political System              3647      15.06%              5   729 +- 673
+(4) Economy                       6715      27.73%             16   420 +- 557
+(5) Welfare, Quality of Life      7142       29.5%              7  1020 +- 821
+(6) Fabric of Society             1491       6.16%              8   186 +- 138
+(7) Social Groups                 1945       8.03%              6   324 +- 273
+OVERALL                          24212        100%             55         None
+
+
+
+CMPD_test
+                             frequency % frequency #subcategories mean +- std
+(1) External Relations             654       5.39%              9    73 +- 83
+(2) Freedom, Democracy             981       8.08%              4  245 +- 219
+(3) Political System              1787      14.72%              5  357 +- 337
+(4) Economy                       3326      27.39%             16  208 +- 281
+(5) Welfare, Quality of Life      3651      30.07%              7  522 +- 421
+(6) Fabric of Society              695       5.72%              8    87 +- 66
+(7) Social Groups                 1048       8.63%              5  210 +- 133
+OVERALL                          12142        100%             54        None
+
+
+
+TOTAL DATASET
+                             frequency % frequency #subcategories   mean +- std
+(1) External Relations            7490       5.27%              9    832 +- 885
+(2) Freedom, Democracy           11127       7.83%              4  2782 +- 2528
+(3) Political System             21263      14.96%              5  4253 +- 3904
+(4) Economy                      39603      27.85%             16  2475 +- 3356
+(5) Welfare, Quality of Life     42277      29.74%              7  6040 +- 4839
+(6) Fabric of Society             8579       6.03%              8   1072 +- 855
+(7) Social Groups                11839       8.33%              6  1973 +- 1600
+OVERALL                         142178        100%             55          None

@@ -1,0 +1,1 @@
+python train_encoder.py --epochs 1 --reduced --reduced-size 1000 --data-path dataset/CMPD_model_test.xlsx --tokenizer dccuchile/bert-base-spanish-wwm-cased --save-model-path results/torchmodel_weights_test.pth --results-path results/
