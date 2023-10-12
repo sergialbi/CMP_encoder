@@ -1,7 +1,0 @@
-18 classes each dataset. Validation and testing from original case.
-Generate augmented dataset with 1%, 5% and 10% of augmented samples.
-python 1_preprocessing.txt -sh -b -d rile -c 1 -mt (-mn 50 -mx 5000)
-
-python 1_preprocessing.txt -sh -b -d rile -c 1 -mt -p 0.01 (-mn 50 -mx 5000)
-python 1_preprocessing.txt -sh -b -d rile -c 1 -mt -p 0.05 (-mn 50 -mx 5000)
-python 1_preprocessing.txt -sh -b -d rile -c 1 -mt -p 0.10 (-mn 50 -mx 5000)

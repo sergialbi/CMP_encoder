@@ -1,2 +1,0 @@
-27, 22, 18 classes each dataset. 
-python 1_preprocessing.txt -sh -b -d rile -c 1 (-mn 50 -mx 5000)

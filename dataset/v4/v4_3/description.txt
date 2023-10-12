@@ -1,2 +1,0 @@
-17 classes each dataset. Random picked
-python 1_preprocessing.txt -sh -b -d rile -c 1 -mt -rt (-mn 50 -mx 5000)
