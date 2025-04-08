@@ -1,6 +1,5 @@
 # CMP_Encoder
-Creation of an encoder to transform a sentence into a CMP code
-
+Classify sentences from Party Manifestos into CMP codes using a BERT-based Sentence Classifier. In particular, EuroBert.
 
 
 ## Project status
@@ -9,28 +8,23 @@ This project is in a development stage. Software is provided as is without warra
 
 
 ## Description
-This project aims to build a neural network that is able to assign to a given sentence, a CMP code from [Manifesto Project](https://manifesto-project.wzb.eu/). We want to automize the process of sentence classification so we can later study how the discourse of a party changes over years and contexts.
+This project aims to build a neural network that is able to correctly assign a CMP code from [Manifesto Project](https://manifesto-project.wzb.eu/) to a given sentence from a Party Manifesto. We want to automize the process of political sentence classification so we can later study how the discourse and ideology of a party changes over years and contexts.
 
-In order to do that, we use a pretrained Bert transformer and finetune it with sentences of the Manifesto Corpus.
+We finetune [EuroBERT](https://huggingface.co/EuroBERT/EuroBERT-210m) with sentences in several languages from the Manifesto Corpus. We have made a selection to even out the number of instances per class.
 
-For the moment being, only spanish text is considered and accordingly, tokenization and pretrained weigths are loaded from ['dccuchile/bert-base-spanish-wwm-cased'](https://huggingface.co/dccuchile/bert-base-spanish-wwm-cased).
-
-Those sentences in catalan are translated to spanish also using a transformer.
-
-Sentences from other countries are left out for the sake of simplicity. Once the model is correctly trained and tested we will fine tune it for other countries and languages.
+We are working on using extra sentences from other sources to increase the accuracy of the classes that have less instances in the dataset.
 <br/><br/>
 
 
 ## Data
-The data used corresponds to the annotated manifestos of the political parties in Spain from 2000 to 2019.
+The data used corresponds to the annotated manifestos of several political parties from 2000 to 2019 for the finetuning task.
 
 The labels for the chosen data subset distribute as follows:
 
-<img src="results/histogram_spain_raw.png"  width="1000" height="350">
+<img src="results/finetuning/previous_testing/histogram_spain_raw.png"  width="1000" height="350">
 
 As it can be seen, subcategories have been truncated to supracategories, that is 103.2 is transformed into 103
 
-Other datasets are being created and tested. For example by limiting the maximum amount of samples per category and taking out those categories with less than enough samples.
 <br/><br/>
 
 
@@ -46,53 +40,50 @@ In that file you can find the calls used.
 ## Folder structure and files
 
 ```
-├── dataset
-│   ├── CMPD_model.xlsx
-│   ├── meta
-│   ├── official_docs
-│   └── preprocessing
-│       ├── get_data.Rmd
-│       ├── preprocess.py
-│       ├── summarize.py
-│       └── translate
-│           └── translator.py
-│   ├── v0
-│   ├── v1
-├── launcher.sh
-├── lib
-├── predict.py
-├── proves
+├── datasets
+│   ├── cmp
+│   │   ├── national
+│   │   └── regional
+│   ├── congress
+│   │   ├── congress.xlsx
+│   │   ├── old
+│   │   ├── original_data
+│   │   └── process_congress_sessions.py
+│   └── congress_parsing.zip
+├── models
+├── README.md
 ├── results
-├── setup
-├── train_encoder.py
-└── train_encoder_notebook.ipynb
+│   ├── finetuning
+│   │   └── previous_testing
+│   └── intermediate_pretraining
+└── src
+    ├── finetuning
+    │   ├── launcher_debug.sh
+    │   ├── launcher.sh
+    │   ├── lib
+    │   ├── predict.py
+    │   ├── results
+    │   ├── setup
+    │   └── train_encoder.py
+    └── intermediate_pretrain
+        ├── intermediate_pretrain.py
+        └── launcher.sh
+
 ```
 
 
-### **Train files**
-Training files can be found under cmp_encoder directly as a notebook and as a script ready to launch: ***train_encoder_notebook.ipynb*** - ***train_encoder.py***
+### **src**
+Training files can be found under the src folder for each of the tasks together with a launch script for MareNostrum5 Supercomputer cluster. For example ***train_encoder.py*** and ***launcher.sh*** under the finetuning folder.
 
+### **results**
+This folders contains execution results, tables and images corresponding to the training files in **src**.
 
-### **lib**
-Folder containing useful files to the training process like the model to build and some other functions.
+### **models**
+It contains the models to execute the finetuning on as well as final models that have already been finetuned or pretrained.
 
-### **proves**
-Containig files in testing process, not finished, containing bugs, etc.
+### **datasets**
+This folder contains all the datasets used in the training files. Each dataset contains subfolder with preprocessing files or annotations.
 
-### **dataset**
-#### **preprocessing**
-Contains the R script to download the data (***get_data.Rmd***),
-MISSING: the API. Register in the Manifesto Project page to obtain it.
-
-#### **official_docs**
-Contains the documentation of the used Codebook as well as the codification of the political parties in pdf and in excel format.
-
-#### **meta**
-Meta information of the selected manifestos to use to train
-
-***CMPD_model.xlsx***: set of sentences with associated CMP code ready to train. Obtained after the call to 'preprocess.py' in order to balance the dataset, add sentences from other languages, remove short sentences, etc.
-
-***CMPD_raw.xlsx***: set of sentences with associated CMP code with a minimal preprocessing (strange token removal, language correction, etc.) but still raw directly extracted from the Manifesto Corpus.
 <br/><br/>
 
 
@@ -101,13 +92,3 @@ Meta information of the selected manifestos to use to train
 Sergi Albiach (BSC), Eduardo Quiñones (BSC), Marc Guinjoan (UOC), Jordi Mas (UOC) and Xavier Roura (UB).
 <br/><br/>
 
-
-## Gitlab Usage
-```
-cd cmp_encoder
-git status #Check which files are updated
-git add . #Add all files to commit
-git commit -m "the_comment" #Create a commit with a comment
-git push # Push the files to Gitlab
-```
-<br/><br/>

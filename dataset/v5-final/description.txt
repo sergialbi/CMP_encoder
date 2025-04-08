@@ -1,8 +1,0 @@
-18 classes each dataset. Validation and testing from original case.
-Generate augmented dataset with 1%, 5% and 10% of augmented samples.
-python 1_preprocessing.txt -sh -rc 000 H -mn 20 -mx 10000 -c 1 -p 0 -rt
-
-python 1_preprocessing.txt -sh -rc 000 H -mn 20 -mx 10000 -c 1 -p 0.05 -rt
-python 1_preprocessing.txt -sh -rc 000 H -mn 20 -mx 10000 -c 1 -p 0.10 -rt
-python 1_preprocessing.txt -sh -rc 000 H -mn 20 -mx 10000 -c 1 -p 0.20 -rt
-python 1_preprocessing.txt -sh -rc 000 H -mn 20 -mx 10000 -c 1 -p 0.40 -rt
